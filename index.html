@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyntiq - The Future of E-Learning & Internships. Coming Soon!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light blue-gray background - fallback, mostly covered by sections */
+            color: #334155; /* Darker text for readability - mostly overridden by section styles */
+        }
+        /* Custom scroll-snap for a smoother full-page experience, optional */
+        html {
+            scroll-behavior: smooth;
+        }
+        .section-padding {
+            padding: 4rem 1rem; /* Default padding for all sections */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 2rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding: 8rem 4rem;
+            }
+        }
+
+        /* Basic keyframe animations for innovation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cardPop {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+        /* New animations for premium feel */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatSubtle {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes logoPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* New specific animation for hero background elements */
+        @keyframes glowFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            33% { transform: translate(10px, -10px) scale(1.05); opacity: 0.3; }
+            66% { transform: translate(-10px, 10px) scale(0.95); opacity: 0.25; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+        }
+
+        /* Countdown specific glow pulse */
+        @keyframes border-glow-pulse {
+            0% {
+                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                border-color: #D94CD6; /* A color from the hero gradient */
+                box-shadow: 0 0 25px rgba(217, 76, 214, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+            100% {
+                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            }
+        }
+
+
+        /* Custom animation utility classes */
+        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-fade-in-delay-05s { animation: fadeIn 1.5s ease-out 0.5s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-01s { animation: fadeInUp 1s ease-out 0.1s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-02s { animation: fadeInUp 1s ease-out 0.2s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-03s { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-04s { animation: fadeInUp 1s ease-out 0.4s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-05s { animation: fadeInUp 1s ease-out 0.5s forwards; opacity: 0; }
+        .animate-fade-in-up-delay-06s { animation: fadeInUp 1s ease-out 0.6s forwards; opacity: 0; }
+
+
+        .animate-card-pop-delay-01s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.1s forwards;
+        }
+        .animate-card-pop-delay-02s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.2s forwards;
+        }
+        .animate-card-pop-delay-03s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.3s forwards;
+        }
+        .animate-card-pop-delay-04s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.4s forwards;
+        }
+        .animate-card-pop-delay-05s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.5s forwards;
+        }
+        .animate-card-pop-delay-06s {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: cardPop 0.6s ease-out 0.6s forwards;
+        }
+
+
+        /* Subtle hero background pattern */
+        .hero-pattern {
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        /* Custom Tailwind pulse for background shapes */
+        .animate-custom-pulse-5s { animation: pulse 5s infinite; }
+        .animate-custom-pulse-7s { animation: pulse 7s infinite; }
+
+        /* Apply gradient shift to hero section */
+        .hero-section-animated-bg {
+            background-size: cover; /* Changed to cover */
+            background-position: center; /* Centered */
+            background-repeat: no-repeat; /* No repeat */
+            animation: none; /* Removed gradientShift, as it's now an image */
+        }
+
+        /* Apply subtle float to some elements for premium feel */
+        .float-animation {
+            animation: floatSubtle 3s ease-in-out infinite;
+        }
+        .glow-float-animation-slow { animation: glowFloat 8s infinite ease-in-out; }
+        .glow-float-animation-medium { animation: glowFloat 6s infinite ease-in-out; }
+        .glow-float-animation-fast { animation: glowFloat 4s infinite ease-in-out; }
+
+
+        /* Enhanced hover effects for cards */
+        .card-hover-effect {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(99, 102, 241, 0.5); /* Indigo glow */
+        }
+
+        /* Enhanced button hover effect */
+        .btn-hover-effect {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-hover-effect:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(251, 191, 36, 0.7); /* Yellow glow */
+        }
+
+        /* Specific styles for Accreditation & Trust section */
+        .accreditation-card-hover:hover {
+            border-color: #6366f1; /* Indigo border on hover */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 4px rgba(99, 102, 241, 0.4); /* Stronger indigo glow */
+        }
+        .logo-filter-transition {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .logo-filter-transition:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+            animation: logoPulse 1.5s infinite; /* Subtle pulse on hover */
+        }
+
+        /* New styles for internship section background visuals */
+        .internship-section-bg {
+            position: relative;
+            overflow: hidden; /* Ensure pseudo-elements don't overflow */
+        }
+
+        .internship-section-bg::before,
+        .internship-section-bg::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatSubtle 6s infinite ease-in-out;
+            z-index: 0; /* Ensure they are behind content */
+        }
+
+        .internship-section-bg::before {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #6366f1, transparent 70%); /* Indigo glow */
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .internship-section-bg::after {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #a855f7, transparent 70%); /* Purple glow */
+            bottom: -70px;
+            right: -70px;
+            animation-delay: 3s;
+        }
+
+        /* Nav link underline animation */
+        .nav-link-effect {
+            position: relative;
+            display: inline-block; /* Essential for pseudo-element positioning */
+        }
+
+        .nav-link-effect::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor; /* Matches text color */
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-link-effect:hover::after {
+            width: 100%;
+        }
+
+        /* Custom text gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #5851E5, #9317C8, #D94CD6, #FF8595);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom gradient button */
+        .gradient-button {
+            background-image: linear-gradient(to right, #9317C8, #D94CD6);
+            color: #ffffff; /* White text on gradient */
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Initial subtle shadow */
+        }
+
+        .gradient-button:hover {
+            transform: translateY(-3px) scale(1.03); /* Lift and slightly scale on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(217, 76, 214, 0.6); /* Stronger shadow with pink glow */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-lg shadow-lg py-5 px-6 md:px-12 flex justify-between items-center fixed w-full z-50 animate-fade-in border-b border-gray-700">
+        <a href="#" class="text-3xl font-extrabold text-white transition-colors duration-300 hover:text-pink-300 hover:scale-105 transform">Zyntiq</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#about-zyntiq" class="nav-link-effect text-gray-200 font-semibold transition-colors duration-200 hover:text-pink-300">Our Vision</a>
+            <a href="#the-zyntiq-difference" class="nav-link-effect text-gray-200 font-bold transition-colors duration-200 hover:text-pink-300">Why Zyntiq?</a>
+            <a href="#real-world-internships" class="nav-link-effect text-gray-200 font-semibold transition-colors duration-200 hover:text-pink-300">Internships</a>
+            <a href="#accreditation-trust" class="nav-link-effect text-gray-200 font-semibold transition-colors duration-200 hover:text-pink-300">Certifications</a>
+            <a href="#newsletter-signup" class="nav-link-effect text-gray-200 font-semibold transition-colors duration-200 hover:text-pink-300">Get Early Access</a>
+        </nav>
+        <button class="md:hidden p-3 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+            <svg class="w-7 h-7 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <!-- Hero Section - Coming Soon -->
+    <section class="relative text-white flex items-center justify-center min-h-screen pt-16 md:pt-20 lg:pt-0 overflow-hidden hero-section-animated-bg" style="background-image: linear-gradient(to right, #5851E5, #9317C8, #D94CD6, #FF8595);" data-launch-date="2025-06-26T10:00:00">
+        <!-- Overlay for readability -->
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent z-0"></div>
+        <!-- Background Pattern & Abstract Shapes -->
+        <div class="absolute inset-0 hero-pattern z-0"></div>
+        <!-- More dynamic background shapes -->
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-indigo-700 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-slow" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-1/2 right-1/3 w-40 h-40 bg-purple-700 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-medium" style="animation-delay: 1.5s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-24 h-24 bg-blue-500 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-fast" style="animation-delay: 2.5s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-36 h-36 bg-amber-500 rounded-full mix-blend-screen opacity-15 blur-3xl glow-float-animation-slow" style="animation-delay: 3.5s;"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center max-w-5xl px-4 py-16 md:py-24">
+            <h1 class="text-4xl md:text-7xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+                The Future of E-Learning & Opportunity is <span class="text-gradient">Almost Here.</span>
+            </h1>
+            <p class="text-xl md:text-3xl font-semibold mb-8 animate-fade-in-delay-05s text-gradient">
+                Zyntiq: Innovate. Learn. Lead.
+            </p>
+            <p class="text-lg md:text-xl mb-10 opacity-90 animate-fade-in-delay-05s">
+                We're crafting an unparalleled platform featuring **dynamic e-learning courses** and **impactful real-world internships** to propel your career forward.
+            </p>
+
+            <!-- Countdown Timer Placeholder -->
+            <div id="countdown" class="bg-white/20 border-2 text-white py-4 px-8 rounded-full inline-block shadow-xl text-2xl md:text-4xl font-bold tracking-wide mb-10 transform translate-y-4 opacity-0 animate-[fadeInUp_1s_ease-out_1s_forwards] animate-[border-glow-pulse_3s_infinite_ease-in-out]" style="text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);">
+                Launching in: <span id="countdown-days">00</span>D <span id="countdown-hours">00</span>H <span id="countdown-minutes">00</span>M <span id="countdown-seconds">00</span>S
+            </div>
+
+            <a href="#newsletter-signup" class="inline-block py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-fade-in-up-delay-06s gradient-button">
+                Join the Zyntiq Revolution!
+            </a>
+            <p class="mt-8 text-sm opacity-80 animate-fade-in-delay-06s">Get exclusive insights & early access perks.</p>
+        </div>
+    </section>
+
+    <!-- Our Vision (Repurposed from 'About Zyntiq') -->
+    <section class="section-padding bg-gradient-to-br from-gray-900 to-gray-700 text-white" id="about-zyntiq">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-fade-in-up">Our Vision: Elevating Your Professional Journey</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefit Card 1 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-01s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20H4a2 2 0 01-2-2V4a2 2 0 012-2h3.293a1 1 0 01.707.293L11.586 6H18a2 2 0 012 2v2M3 11h18M7 15h10M7 19h10"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">AI-Powered Learning Paths</h3>
+                    <p class="text-gray-100">Personalized education adapting to your unique pace and goals.</p>
+                </div>
+                <!-- Benefit Card 2 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-02s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857m7.5 1.857H17m-7.5 0A3 3 0 0112 15h2a3 3 0 013 3v2M3 18h18M6 6h.01M6 10h.01M6 14h.01M6 18h.01"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Global Mentor Network</h3>
+                    <p class="text-gray-100">Connect with industry leaders worldwide for unparalleled guidance.</p>
+                </div>
+                <!-- Benefit Card 3 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-03s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-1.12-8.455-3.007a.999.999 0 00-1.002 1.86A25.923 25.923 0 0012 17c4.142 0 7.828-1.748 10.455-4.577a.999.999 0 00-1.002-1.86z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Impactful Industry Placements</h3>
+                    <p class="text-gray-100">Secure real-world experience that truly stands out to employers.</p>
+                </div>
+                <!-- Benefit Card 4 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-04s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Adaptive Learning Environment</h3>
+                    <p class="text-gray-100">Seamlessly learn across devices, tailored to your lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Zyntiq Difference (Key Differentiators) -->
+    <section class="section-padding bg-gradient-to-br from-gray-700 to-gray-900 text-white" id="the-zyntiq-difference">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white animate-fade-in-up">The Zyntiq Advantage: What Makes Us Different</h2>
+            <p class="text-lg md:text-xl text-gray-100 mb-12 animate-fade-in-up-delay-01s">We don't just offer courses; we provide a complete ecosystem for career acceleration. Here's our commitment to your success:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Difference Card 1: Hyper-Personalized AI-Powered Learning -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-01s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M17 12h.01M12 12h.01M12 4V3m0 18v-1M4.21 6.79l-.706-.705M17.788 17.788l.707.707M18 12h.01M6 12h.01M9.663 17H5.25a2.25 2.25 0 01-2.25-2.25V6.254a2.25 2.25 0 012.25-2.25h13.597a2.25 2.25 0 012.25 2.25v10.125a2.25 2.25 0 01-2.25 2.25H15.337m-1.013-1.013L9.663 17M11.25 14.25h-2.25m4.5 0h-2.25"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Hyper-Personalized AI Learning</h3>
+                    <p class="text-gray-100">Our AI adapts content and pace specifically to your learning style, ensuring maximum retention and engagement.</p>
+                </div>
+                <!-- Difference Card 2: Guaranteed Project-Based Internships -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-02s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.5l2 2 4-4m-12 11h.01M12 18h.01M16 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Guaranteed Project-Based Internships</h3>
+                    <p class="text-gray-100">We don't just offer internships; we ensure you secure a relevant project-based role to build a robust portfolio.</p>
+                </div>
+                <!-- Difference Card 3: Dedicated Career Mentorship -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-03s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M12 20V10m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm-8 8v-2.5A6.5 6.5 0 0112 9.5a6.5 6.5 0 018 7.5V18l-.92.92"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Dedicated Career Mentorship</h3>
+                    <p class="text-gray-100">Receive 1-on-1 guidance from industry veterans, not just during courses, but throughout your job search.</p>
+                </div>
+                <!-- Difference Card 4: Industry-Led, Future-Proof Curriculum -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-04s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Industry-Led, Future-Proof Curriculum</h3>
+                    <p class="text-gray-100">Our content is continuously updated by industry leaders, ensuring your skills are always cutting-edge.</p>
+                </div>
+                 <!-- Difference Card 5: Post-Completion Placement Support -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-05s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-1.12-8.455-3.007a.999.999 0 00-1.002 1.86A25.923 25.923 0 0012 17c4.142 0 7.828-1.748 10.455-4.577a.999.999 0 00-1.002-1.86z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Post-Completion Placement Support</h3>
+                    <p class="text-gray-100">Beyond courses and internships, we offer active support for job placements and career transitions.</p>
+                </div>
+                 <!-- Difference Card 6: Zyntiq Alumni Network -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-06s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857m7.5 1.857H17m-7.5 0A3 3 0 0112 15h2a3 3 0 013 3v2M3 18h18M6 6h.01M6 10h.01M6 14h.01M6 18h.01"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Exclusive Alumni Network</h3>
+                    <p class="text-gray-100">Join a thriving community of Zyntiq graduates for lifelong networking and collaborative opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-World Impact: Zyntiq Internships -->
+    <section class="section-padding bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white internship-section-bg" id="real-world-internships">
+        <div class="container mx-auto max-w-6xl text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white animate-fade-in-up">Real-World Impact: Zyntiq Internships</h2>
+            <p class="text-lg md:text-xl opacity-90 mb-12 animate-fade-in-up-delay-01s">
+                Gain invaluable hands-on experience and make a tangible difference. Our exclusive internship programs are designed to launch your career.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Internship Benefit 1 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-01s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Applied Skills & Projects</h3>
+                    <p class="text-gray-100">Work on real company projects that build your portfolio and expertise.</p>
+                </div>
+                <!-- Internship Benefit 2 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-02s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M12 20V10m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4zm-8 8v-2.5A6.5 6.5 0 0112 9.5a6.5 6.5 0 018 7.5V18l-.92.92"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Direct Industry Access</h3>
+                    <p class="text-gray-100">Connect with leading companies and professionals in your field.</p>
+                </div>
+                <!-- Internship Benefit 3 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-03s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Career Acceleration</h3>
+                    <p class="text-gray-100">Boost your resume and increase your chances of securing full-time roles.</p>
+                </div>
+                <!-- Internship Benefit 4 -->
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-04s card-hover-effect">
+                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.5l2 2 4-4m-12 11h.01M12 18h.01M16 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Mentorship & Feedback</h3>
+                    <p class="text-gray-100">Receive personalized guidance from industry leaders throughout your journey.</p>
+                </div>
+            </div>
+            <a href="#newsletter-signup" class="inline-block mt-12 bg-white hover:bg-gray-100 text-indigo-800 font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-fade-in-up-delay-05s btn-hover-effect">
+                Learn More About Internships
+            </a>
+        </div>
+    </section>
+
+    <!-- Accreditation & Trust -->
+    <section class="section-padding bg-gradient-to-br from-blue-100 to-indigo-200 text-gray-800" id="accreditation-trust">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in-up">Accreditation & Trust: Your Quality Assurance</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in-up-delay-01s">Zyntiq is committed to delivering excellence. Our programs are designed to meet rigorous standards, ensuring your qualifications are recognized and respected.</p>
+
+            <div class="flex flex-wrap justify-center items-center gap-12">
+                <!-- Placeholder for Government/Industry Certification Logo 1 -->
+                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-01s accreditation-card-hover">
+                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Govt+Cert+A" alt="Government Certification A" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-700">Certified by [Govt. Body A]</p>
+                </div>
+                <!-- Placeholder for Government/Industry Certification Logo 2 -->
+                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-02s accreditation-card-hover">
+                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Industry+Std+B" alt="Industry Standard B" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-700">Recognized by [Industry Org B]</p>
+                </div>
+                <!-- Placeholder for Government/Industry Certification Logo 3 -->
+                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-03s accreditation-card-hover">
+                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Quality+Seal+C" alt="Quality Seal C" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-700">Quality Assured by [Seal C]</p>
+                </div>
+            </div>
+            <p class="text-md text-gray-700 mt-10 max-w-3xl mx-auto animate-fade-in-up-delay-04s">
+                Our commitment to quality ensures that the skills you acquire at Zyntiq are not just theoretical, but officially endorsed for their relevance and excellence in the professional landscape.
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Roadmap / Future Vision -->
+    <section class="section-padding bg-gradient-to-br from-gray-800 to-indigo-950 text-white">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-fade-in-up">Our Roadmap: Innovations on the Horizon</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center relative py-8">
+                <!-- Timeline Line (static, but elements animate) -->
+                <div class="absolute h-full w-1 bg-indigo-400 left-1/2 transform -translate-x-1/2 md:w-full md:h-1 md:top-1/2 md:left-0"></div>
+
+                <!-- Milestone 1 -->
+                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left p-4 animate-fade-in-up-delay-01s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
+                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">1</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Platform Launch</h3>
+                    <p class="text-gray-200 text-sm">Full release of our core e-learning and internship matching platform.</p>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-center text-center p-4 mt-8 md:mt-0 animate-fade-in-up-delay-03s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
+                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">2</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">AI Personalization</h3>
+                    <p class="text-gray-200 text-sm">Introducing adaptive learning paths and smart career recommendations.</p>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-end text-center md:text-right p-4 mt-8 md:mt-0 animate-fade-in-up-delay-05s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
+                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">3</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Global Expansion</h3>
+                    <p class="text-gray-200 text-sm">Broadening course offerings and internship opportunities worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Sign-up Section -->
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-500 text-white section-padding text-center" id="newsletter-signup">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight animate-fade-in-up">Secure Your Spot: Join the Zyntiq Inner Circle!</h2>
+            <p class="text-lg md:text-xl opacity-90 mb-10 animate-fade-in-up-delay-01s">
+                Don't miss out on early access, exclusive beta invites, and foundational insights from Zyntiq as we launch.
+            </p>
+            <form class="w-full max-w-lg mx-auto" onsubmit="handleNewsletterSubmit(event)">
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up-delay-02s">
+                    <input type="email" id="emailInput" placeholder="Enter your email address" class="flex-grow w-full sm:w-auto p-3 rounded-full text-gray-800 border-2 border-white focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
+                    <button type="submit" class="w-full sm:w-auto gradient-button font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-fade-in-up-delay-06s">
+                        Get Early Access!
+                    </button>
+                </div>
+                <p id="responseMessage" class="mt-4 text-sm text-yellow-200"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12 px-6 md:px-12 animate-fade-in">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Zyntiq</h3>
+                <p class="text-sm">Innovating e-learning and career opportunities for a brighter future.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#about-zyntiq" class="hover:text-white transition-colors duration-200 text-sm">Our Vision</a></li>
+                    <li><a href="#the-zyntiq-difference" class="hover:text-white transition-colors duration-200 text-sm">Why Zyntiq?</a></li>
+                    <li><a href="#real-world-internships" class="hover:text-white transition-colors duration-200 text-sm">Internships</a></li>
+                    <li><a href="#accreditation-trust" class="hover:text-white transition-colors duration-200 text-sm">Certifications</a></li>
+                    <li><a href="#newsletter-signup" class="hover:text-white transition-colors duration-200 text-sm">Get Early Access</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- Connect Info -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Connect</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>Email: <a href="mailto:info@zyntiq.com" class="hover:text-white transition-colors duration-200">info@zyntiq.com</a></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Follow Our Journey</h3>
+                <div class="flex space-x-4">
+                    <!-- Instagram Icon -->
+                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWji" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0 2.138c-3.141 0-3.535.012-4.76.066-2.57.118-3.9 1.488-4.018 4.018-.054 1.225-.066 1.619-.066 4.76s.012 3.535.066 4.76c.118 2.53 1.488 3.9 4.018 4.018 1.225.054 1.619.066 4.76.066s3.535-.012 4.76-.066c2.53-.118 3.9-1.488 4.018-4.018.054-1.225.066-1.619.066-4.76s-.012-3.535-.066-4.76c-.118-2.53-1.488-3.9-4.018-4.018-1.225-.054-1.619-.066-4.76-.066zm0 1.954a6.762 6.762 0 100 13.524 6.762 6.762 0 000-13.524zm0 2.138a4.624 4.624 0 110 9.248 4.624 4.624 0 010-9.248zm-6.242-4.01a1.272 1.272 0 100 2.544 1.272 1.272 0 000-2.544z"/></svg>
+                    </a>
+                    <!-- LinkedIn Icon -->
+                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38.99-2.5 2.48-2.5h.02c1.379 0 2.48 1.119 2.48 2.5zM0 24h4.9v-16H0V24zM9.345 16.57c-1.696-1.056-2.585-1.921-2.585-4.148v-2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v2.071c0 2.227-.889 3.092-2.585 4.148zM24 24h-4.9v-8.82c0-2.317-1.053-4.148-2.585-4.148h-.026c-1.696 0-2.585 1.831-2.585 4.148v8.82H9.345V8h4.9v2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v8.82H24z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-8">
+            &copy; 2025 Zyntiq. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission handling
+        function handleNewsletterSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            const emailInput = document.getElementById('emailInput');
+            const responseMessage = document.getElementById('responseMessage');
+            const email = emailInput.value;
+
+            if (email) {
+                // In a real application, you would send this email to your backend server
+                // For this demonstration, we'll just show a success message.
+                responseMessage.textContent = 'Thanks for your interest! We\'ll notify you when Zyntiq launches!';
+                responseMessage.classList.add('text-yellow-200'); // Ensure it's visible
+                emailInput.value = ''; // Clear the input field
+                emailInput.disabled = true; // Optionally disable the input
+                event.target.querySelector('button').disabled = true; // Disable the button
+            } else {
+                responseMessage.textContent = 'Please enter a valid email address.';
+                responseMessage.classList.add('text-red-300'); // Indicate error
+            }
+        }
+
+        // Countdown Timer Logic
+        const countdownElement = document.getElementById('countdown');
+        const launchDateString = document.querySelector('section[data-launch-date]').dataset.launchDate;
+        const launchDate = new Date(launchDateString).getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                countdownElement.innerHTML = "Zyntiq is LIVE!";
+                countdownElement.classList.remove('text-indigo-800');
+                countdownElement.classList.add('text-green-500');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
