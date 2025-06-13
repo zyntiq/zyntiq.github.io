@@ -6,6 +6,8 @@
     <title>Zyntiq - The Future of E-Learning & Internships. Coming Soon!</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
@@ -91,6 +93,13 @@
                 border-color: rgba(255, 255, 255, 0.5);
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             }
+        }
+
+        /* Social Media Icon specific animations */
+        @keyframes social-icon-glow {
+            0% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+            50% { background-position: 100% 50%; box-shadow: 0 0 15px rgba(217, 76, 214, 0.6), 0 0 8px rgba(255, 255, 255, 0.4); }
+            100% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
         }
 
 
@@ -586,17 +595,19 @@
             </div>
             <!-- Social Media -->
             <div class="flex flex-col items-center">
-                <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Follow Our Journey</h3>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Follow Our Journey</h3>
                 <div class="flex space-x-6 mt-2">
                     <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWji" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white/10 text-pink-300 shadow-md transition-all duration-300 transform hover:scale-110 hover:bg-pink-400 hover:text-white">
-                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0 2.138c-3.141 0-3.535.012-4.76.066-2.57.118-3.9 1.488-4.018 4.018-.054 1.225-.066 1.619-.066 4.76s.012 3.535.066 4.76c.118 2.53 1.488 3.9 4.018 4.018 1.225.054 1.619.066 4.76.066s3.535-.012 4.76-.066c2.53-.118 3.9-1.488 4.018-4.018.054-1.225.066-1.619.066-4.76s-.012-3.535-.066-4.76c-.118-2.53-1.488-3.9-4.018-4.018-1.225-.054-1.619-.066-4.76-.066zm0 1.954a6.762 6.762 0 100 13.524 6.762 6.762 0 000-13.524zm0 2.138a4.624 4.624 0 110 9.248 4.624 4.624 0 010-9.248zm-6.242-4.01a1.272 1.272 0 100 2.544 1.272 1.272 0 000-2.544z"/></svg>
+                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWbi" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-lg transition-all duration-300 transform hover:scale-115 hover:shadow-xl hover:shadow-pink-400/50"
+                       style="background-size: 200% auto; animation: social-icon-glow 3s infinite ease-in-out;">
+                        <i class="fab fa-instagram text-3xl"></i>
                     </a>
                     <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-white/10 text-pink-300 shadow-md transition-all duration-300 transform hover:scale-110 hover:bg-pink-400 hover:text-white">
-                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38.99-2.5 2.48-2.5h.02c1.379 0 2.48 1.119 2.48 2.5zM0 24h4.9v-16H0V24zM9.345 16.57c-1.696-1.056-2.585-1.921-2.585-4.148v-2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v2.071c0 2.227-.889 3.092-2.585 4.148zM24 24h-4.9v-8.82c0-2.317-1.053-4.148-2.585-4.148h-.026c-1.696 0-2.585 1.831-2.585 4.148v8.82H9.345V8h4.9v2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v8.82H24z"/>
-                        </svg>
+                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-lg transition-all duration-300 transform hover:scale-115 hover:shadow-xl hover:shadow-pink-400/50"
+                       style="background-size: 200% auto; animation: social-icon-glow 3s infinite ease-in-out 0.5s;">
+                        <i class="fab fa-linkedin-in text-3xl"></i>
                     </a>
                 </div>
             </div>
