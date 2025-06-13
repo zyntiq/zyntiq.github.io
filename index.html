@@ -102,21 +102,29 @@
             100% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
         }
 
-        @keyframes social-icon-pulse {
+        /* New social icon float and pulse animation */
+        @keyframes social-icon-float-pulse {
             0% {
-                transform: scale(1);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 0px rgba(16, 185, 129, 0.3); /* Greenish glow */
+                transform: translateY(0) scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
+            }
+            25% {
+                transform: translateY(-5px) scale(1.03);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 8px rgba(16, 185, 129, 0.3);
             }
             50% {
-                transform: scale(1.05);
-                box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 0 8px rgba(16, 185, 129, 0.5); /* Stronger greenish glow */
+                transform: translateY(0) scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
+            }
+            75% {
+                transform: translateY(-5px) scale(1.03);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 8px rgba(16, 185, 129, 0.3);
             }
             100% {
-                transform: scale(1);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 0px rgba(16, 185, 129, 0.3); /* Greenish glow */
+                transform: translateY(0) scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
             }
         }
-
 
         /* Custom animation utility classes */
         .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
@@ -297,6 +305,93 @@
         .gradient-button:hover {
             transform: translateY(-3px) scale(1.03); /* Lift and slightly scale on hover */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(217, 76, 214, 0.6); /* Stronger shadow with pink glow */
+        }
+
+        /* New Social Media Container Style */
+        .social-media-container-creative {
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%); /* Darker, sophisticated gradient */
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem; /* More rounded */
+            padding: 2.5rem 1.5rem; /* More internal space */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05); /* Stronger shadow with inner glow */
+            transform: skewY(-2deg); /* Subtle angle for uniqueness */
+            transition: all 0.5s ease-in-out;
+            overflow: hidden; /* Hide overflow of skewed content if any */
+            animation: floatSubtle 4s infinite ease-in-out; /* Add float animation to container */
+        }
+        .social-media-container-creative:hover {
+            transform: skewY(0deg) scale(1.02); /* Straighten and slightly enlarge on hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        /* Ensure content inside is not skewed */
+        .social-media-container-creative > * {
+            transform: skewY(2deg); /* Counter-skew children */
+        }
+
+
+        /* New Social Icon Styles */
+        .social-icon-button-creative {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 75px; /* Larger */
+            height: 75px; /* Larger */
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05); /* Subtle transparent background */
+            border: 2px solid transparent; /* Initial transparent border */
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3), inset 0 0 0px rgba(16, 185, 129, 0); /* Initial shadow, no inner glow */
+            cursor: pointer;
+        }
+
+        .social-icon-button-creative::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px; /* Border thickness */
+            background: linear-gradient(45deg, #3B82F6, #10B981); /* Blue-green gradient for border effect */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 1;
+            opacity: 0; /* Initially hidden border glow */
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .social-icon-button-creative .fab {
+            z-index: 2;
+            color: #E2E8F0; /* Light gray for icon fallback */
+            font-size: 2.75rem; /* Even larger icon */
+            transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
+            background: linear-gradient(45deg, #3B82F6, #10B981); /* Icon text gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-icon-button-creative:hover {
+            transform: translateY(-10px) rotate(8deg) scale(1.2); /* More pronounced lift, rotate, and scale */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 25px rgba(16, 185, 129, 0.8), inset 0 0 15px rgba(16, 185, 129, 0.5); /* Stronger glow and inner shadow on hover */
+        }
+
+        .social-icon-button-creative:hover::before {
+            opacity: 1; /* Show border glow on hover */
+        }
+
+        /* Adjust social-icon-pulse animation for the new structure */
+        @keyframes social-icon-pulse {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            50% {
+                transform: translateY(-3px) scale(1.02); /* Slight lift */
+                box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 10px rgba(16, 185, 129, 0.4); /* Subtle glow */
+            }
         }
     </style>
 </head>
@@ -609,19 +704,19 @@
                 </ul>
             </div>
             <!-- Social Media -->
-            <div class="flex flex-col items-center py-4 rounded-xl bg-gray-700/30 backdrop-blur-md shadow-inner" style="background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);">
-                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 text-shadow-md">Follow Our Journey</h3>
-                <div class="flex space-x-8 mt-2">
+            <div class="flex flex-col items-center py-6 px-4 social-media-container-creative">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 text-shadow-md">Follow Our Journey</h3>
+                <div class="flex space-x-10 mt-2">
                     <!-- Instagram Icon -->
                     <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWbi" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center p-5 rounded-full bg-gradient-to-r from-blue-500 to-green-400 text-white shadow-lg transition-all duration-300 transform hover:scale-125 hover:shadow-xl hover:shadow-green-400/50"
-                       style="background-size: 200% auto; animation: social-icon-pulse 3s infinite ease-in-out;">
+                       class="social-icon-button-creative"
+                       style="animation-delay: 0.2s;">
                         <i class="fab fa-instagram text-4xl"></i>
                     </a>
                     <!-- LinkedIn Icon -->
                     <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center p-5 rounded-full bg-gradient-to-r from-blue-500 to-green-400 text-white shadow-lg transition-all duration-300 transform hover:scale-125 hover:shadow-xl hover:shadow-green-400/50"
-                       style="background-size: 200% auto; animation: social-icon-pulse 3s infinite ease-in-out 0.5s;">
+                       class="social-icon-button-creative"
+                       style="animation-delay: 0.5s;">
                         <i class="fab fa-linkedin-in text-4xl"></i>
                     </a>
                 </div>
