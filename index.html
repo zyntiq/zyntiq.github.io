@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zyntiq - The Future of E-Learning & Internships. Coming Soon!</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=UTF-8,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradientZ' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='100%25' stop-color='%2310B981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-weight='800' font-size='20' fill='url(%23gradientZ)'%3EZ%3C/text%3E%3C/svg%3E">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN for social media icons -->
@@ -721,60 +723,133 @@
                     </a>
                 </div>
             </div>
+            <!-- User ID Display -->
+            <div class="text-center text-sm text-gray-500 mt-8 col-span-full">
+                <p>Your User ID: <span id="currentUserId" class="font-bold text-gray-300">Loading...</span></p>
+            </div>
         </div>
         <div class="text-center text-sm text-gray-500 mt-8">
             &copy; 2025 Zyntiq. All rights reserved.
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Initialize Firebase
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let userId = null;
+
+        // Authenticate anonymously or with custom token
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userId = user.uid;
+                document.getElementById('currentUserId').textContent = userId;
+            } else {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined') {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (error) {
+                    console.error("Error during Firebase authentication:", error);
+                    document.getElementById('currentUserId').textContent = "Auth Error";
+                }
+            }
+        });
+
+
         // Newsletter form submission handling
-        function handleNewsletterSubmit(event) {
+        async function handleNewsletterSubmit(event) {
             event.preventDefault(); // Prevent default form submission
             const emailInput = document.getElementById('emailInput');
             const responseMessage = document.getElementById('responseMessage');
             const email = emailInput.value;
 
-            if (email) {
-                // In a real application, you would send this email to your backend server
-                // For this demonstration, we'll just show a success message.
-                responseMessage.textContent = 'Thanks for your interest! We\'ll notify you when Zyntiq launches!';
-                responseMessage.classList.add('text-yellow-200'); // Ensure it's visible
-                emailInput.value = ''; // Clear the input field
-                emailInput.disabled = true; // Optionally disable the input
-                event.target.querySelector('button').disabled = true; // Disable the button
-            } else {
+            if (!email) {
                 responseMessage.textContent = 'Please enter a valid email address.';
-                responseMessage.classList.add('text-red-300'); // Indicate error
+                responseMessage.className = 'mt-4 text-sm text-red-400';
+                return;
+            }
+
+            if (!userId) {
+                responseMessage.textContent = 'Authentication not ready. Please try again in a moment.';
+                responseMessage.className = 'mt-4 text-sm text-orange-400';
+                console.warn("Attempted to submit form before Firebase auth was ready.");
+                return;
+            }
+
+            try {
+                // Add the email to a Firestore collection
+                // Storing in a public collection as newsletter sign-ups are typically public data
+                const docRef = await addDoc(collection(db, `/artifacts/${appId}/public/data/newsletter_subscribers`), {
+                    email: email,
+                    timestamp: serverTimestamp(),
+                    userId: userId // Store the anonymous user ID
+                });
+
+                responseMessage.textContent = 'Thanks for your interest! We\'ve saved your email and will notify you when Zyntiq launches!';
+                responseMessage.className = 'mt-4 text-sm text-yellow-200'; // Success color
+                emailInput.value = ''; // Clear the input field
+                emailInput.disabled = true; // Disable the input field
+                event.target.querySelector('button').disabled = true; // Disable the button
+                console.log("Document written with ID: ", docRef.id);
+
+            } catch (e) {
+                console.error("Error adding document to Firestore: ", e);
+                responseMessage.textContent = 'There was an error saving your email. Please try again or contact support.';
+                responseMessage.className = 'mt-4 text-sm text-red-400'; // Error color
+                emailInput.disabled = false; // Enable input
+                event.target.querySelector('button').disabled = false; // Enable button
             }
         }
 
+        // Assign the submit handler to the form
+        document.querySelector('#newsletter-signup form').onsubmit = handleNewsletterSubmit;
+
+
         // Countdown Timer Logic
         const countdownElement = document.getElementById('countdown');
-        const launchDateString = document.querySelector('section[data-launch-date]').dataset.launchDate;
-        const launchDate = new Date(launchDateString).getTime();
+        const heroSection = document.querySelector('section[data-launch-date]');
+        const launchDateString = heroSection ? heroSection.dataset.launchDate : null;
+        const launchDate = launchDateString ? new Date(launchDateString).getTime() : null;
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
+        if (launchDate) {
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
-            document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
-            document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
+                document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
+                document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
+                document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
+                document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
 
-            if (distance < 0) {
-                clearInterval(x);
-                countdownElement.innerHTML = "Zyntiq is LIVE!";
-                countdownElement.classList.remove('text-indigo-800');
-                countdownElement.classList.add('text-green-500');
-            }
-        }, 1000);
+                if (distance < 0) {
+                    clearInterval(x);
+                    countdownElement.innerHTML = "Zyntiq is LIVE!";
+                    countdownElement.classList.remove('text-indigo-800');
+                    countdownElement.classList.add('text-green-500');
+                }
+            }, 1000);
+        } else {
+             countdownElement.innerHTML = "Launch date not set.";
+             countdownElement.classList.remove('text-indigo-800');
+             countdownElement.classList.add('text-red-500');
+        }
     </script>
 </body>
 </html>
