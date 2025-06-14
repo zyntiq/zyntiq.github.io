@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zyntiq - The Future of E-Learning & Internships. Coming Soon!</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=UTF-8,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradientZ' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='100%25' stop-color='%2310B981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-weight='800' font-size='20' fill='url(%23gradientZ)'%3EZ%3C/text%3E%3C/svg%3E">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN for social media icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
@@ -97,36 +93,6 @@
             }
         }
 
-        /* Social Media Icon specific animations */
-        @keyframes social-icon-glow {
-            0% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
-            50% { background-position: 100% 50%; box-shadow: 0 0 15px rgba(217, 76, 214, 0.6), 0 0 8px rgba(255, 255, 255, 0.4); }
-            100% { background-position: 0% 50%; box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
-        }
-
-        /* New social icon float and pulse animation */
-        @keyframes social-icon-float-pulse {
-            0% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
-            }
-            25% {
-                transform: translateY(-5px) scale(1.03);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 8px rgba(16, 185, 129, 0.3);
-            }
-            50% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
-            }
-            75% {
-                transform: translateY(-5px) scale(1.03);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 8px rgba(16, 185, 129, 0.3);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 0px rgba(16, 185, 129, 0);
-            }
-        }
 
         /* Custom animation utility classes */
         .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
@@ -307,93 +273,6 @@
         .gradient-button:hover {
             transform: translateY(-3px) scale(1.03); /* Lift and slightly scale on hover */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(217, 76, 214, 0.6); /* Stronger shadow with pink glow */
-        }
-
-        /* New Social Media Container Style */
-        .social-media-container-creative {
-            position: relative;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%); /* Darker, sophisticated gradient */
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem; /* More rounded */
-            padding: 2.5rem 1.5rem; /* More internal space */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05); /* Stronger shadow with inner glow */
-            transform: skewY(-2deg); /* Subtle angle for uniqueness */
-            transition: all 0.5s ease-in-out;
-            overflow: hidden; /* Hide overflow of skewed content if any */
-            animation: floatSubtle 4s infinite ease-in-out; /* Add float animation to container */
-        }
-        .social-media-container-creative:hover {
-            transform: skewY(0deg) scale(1.02); /* Straighten and slightly enlarge on hover */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-        /* Ensure content inside is not skewed */
-        .social-media-container-creative > * {
-            transform: skewY(2deg); /* Counter-skew children */
-        }
-
-
-        /* New Social Icon Styles */
-        .social-icon-button-creative {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 75px; /* Larger */
-            height: 75px; /* Larger */
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05); /* Subtle transparent background */
-            border: 2px solid transparent; /* Initial transparent border */
-            overflow: hidden;
-            transition: all 0.4s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3), inset 0 0 0px rgba(16, 185, 129, 0); /* Initial shadow, no inner glow */
-            cursor: pointer;
-        }
-
-        .social-icon-button-creative::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            padding: 2px; /* Border thickness */
-            background: linear-gradient(45deg, #3B82F6, #10B981); /* Blue-green gradient for border effect */
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: 1;
-            opacity: 0; /* Initially hidden border glow */
-            transition: opacity 0.4s ease-in-out;
-        }
-
-        .social-icon-button-creative .fab {
-            z-index: 2;
-            color: #E2E8F0; /* Light gray for icon fallback */
-            font-size: 2.75rem; /* Even larger icon */
-            transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
-            background: linear-gradient(45deg, #3B82F6, #10B981); /* Icon text gradient */
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .social-icon-button-creative:hover {
-            transform: translateY(-10px) rotate(8deg) scale(1.2); /* More pronounced lift, rotate, and scale */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 25px rgba(16, 185, 129, 0.8), inset 0 0 15px rgba(16, 185, 129, 0.5); /* Stronger glow and inner shadow on hover */
-        }
-
-        .social-icon-button-creative:hover::before {
-            opacity: 1; /* Show border glow on hover */
-        }
-
-        /* Adjust social-icon-pulse animation for the new structure */
-        @keyframes social-icon-pulse {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            }
-            50% {
-                transform: translateY(-3px) scale(1.02); /* Slight lift */
-                box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 10px rgba(16, 185, 129, 0.4); /* Subtle glow */
-            }
         }
     </style>
 </head>
@@ -706,26 +585,20 @@
                 </ul>
             </div>
             <!-- Social Media -->
-            <div class="flex flex-col items-center py-6 px-4 social-media-container-creative">
-                <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 text-shadow-md">Follow Our Journey</h3>
-                <div class="flex space-x-10 mt-2">
+            <div>
+                <h3 class="text-lg font-semibold text-white mb-4">Follow Our Journey</h3>
+                <div class="flex space-x-4">
                     <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWbi" target="_blank" rel="noopener noreferrer"
-                       class="social-icon-button-creative"
-                       style="animation-delay: 0.2s;">
-                        <i class="fab fa-instagram text-4xl"></i>
+                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWji" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0 2.138c-3.141 0-3.535.012-4.76.066-2.57.118-3.9 1.488-4.018 4.018-.054 1.225-.066 1.619-.066 4.76s.012 3.535.066 4.76c.118 2.53 1.488 3.9 4.018 4.018 1.225.054 1.619.066 4.76.066s3.535-.012 4.76-.066c2.53-.118 3.9-1.488 4.018-4.018.054-1.225.066-1.619.066-4.76s-.012-3.535-.066-4.76c-.118-2.53-1.488-3.9-4.018-4.018-1.225-.054-1.619-.066-4.76-.066zm0 1.954a6.762 6.762 0 100 13.524 6.762 6.762 0 000-13.524zm0 2.138a4.624 4.624 0 110 9.248 4.624 4.624 0 010-9.248zm-6.242-4.01a1.272 1.272 0 100 2.544 1.272 1.272 0 000-2.544z"/></svg>
                     </a>
                     <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer"
-                       class="social-icon-button-creative"
-                       style="animation-delay: 0.5s;">
-                        <i class="fab fa-linkedin-in text-4xl"></i>
+                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38.99-2.5 2.48-2.5h.02c1.379 0 2.48 1.119 2.48 2.5zM0 24h4.9v-16H0V24zM9.345 16.57c-1.696-1.056-2.585-1.921-2.585-4.148v-2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v2.071c0 2.227-.889 3.092-2.585 4.148zM24 24h-4.9v-8.82c0-2.317-1.053-4.148-2.585-4.148h-.026c-1.696 0-2.585 1.831-2.585 4.148v8.82H9.345V8h4.9v2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v8.82H24z"/>
+                        </svg>
                     </a>
                 </div>
-            </div>
-            <!-- User ID Display -->
-            <div class="text-center text-sm text-gray-500 mt-8 col-span-full">
-                <p>Your User ID: <span id="currentUserId" class="font-bold text-gray-300">Loading...</span></p>
             </div>
         </div>
         <div class="text-center text-sm text-gray-500 mt-8">
@@ -733,123 +606,54 @@
         </div>
     </footer>
 
-    <script type="module">
-        // Firebase Imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Initialize Firebase
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-
-        let userId = null;
-
-        // Authenticate anonymously or with custom token
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                userId = user.uid;
-                document.getElementById('currentUserId').textContent = userId;
-            } else {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined') {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                } catch (error) {
-                    console.error("Error during Firebase authentication:", error);
-                    document.getElementById('currentUserId').textContent = "Auth Error";
-                }
-            }
-        });
-
-
+    <script>
         // Newsletter form submission handling
-        async function handleNewsletterSubmit(event) {
+        function handleNewsletterSubmit(event) {
             event.preventDefault(); // Prevent default form submission
             const emailInput = document.getElementById('emailInput');
             const responseMessage = document.getElementById('responseMessage');
             const email = emailInput.value;
 
-            if (!email) {
-                responseMessage.textContent = 'Please enter a valid email address.';
-                responseMessage.className = 'mt-4 text-sm text-red-400';
-                return;
-            }
-
-            if (!userId) {
-                responseMessage.textContent = 'Authentication not ready. Please try again in a moment.';
-                responseMessage.className = 'mt-4 text-sm text-orange-400';
-                console.warn("Attempted to submit form before Firebase auth was ready.");
-                return;
-            }
-
-            try {
-                // Add the email to a Firestore collection
-                // Storing in a public collection as newsletter sign-ups are typically public data
-                const docRef = await addDoc(collection(db, `/artifacts/${appId}/public/data/newsletter_subscribers`), {
-                    email: email,
-                    timestamp: serverTimestamp(),
-                    userId: userId // Store the anonymous user ID
-                });
-
-                responseMessage.textContent = 'Thanks for your interest! We\'ve saved your email and will notify you when Zyntiq launches!';
-                responseMessage.className = 'mt-4 text-sm text-yellow-200'; // Success color
+            if (email) {
+                // In a real application, you would send this email to your backend server
+                // For this demonstration, we'll just show a success message.
+                responseMessage.textContent = 'Thanks for your interest! We\'ll notify you when Zyntiq launches!';
+                responseMessage.classList.add('text-yellow-200'); // Ensure it's visible
                 emailInput.value = ''; // Clear the input field
-                emailInput.disabled = true; // Disable the input field
+                emailInput.disabled = true; // Optionally disable the input
                 event.target.querySelector('button').disabled = true; // Disable the button
-                console.log("Document written with ID: ", docRef.id);
-
-            } catch (e) {
-                console.error("Error adding document to Firestore: ", e);
-                responseMessage.textContent = 'There was an error saving your email. Please try again or contact support.';
-                responseMessage.className = 'mt-4 text-sm text-red-400'; // Error color
-                emailInput.disabled = false; // Enable input
-                event.target.querySelector('button').disabled = false; // Enable button
+            } else {
+                responseMessage.textContent = 'Please enter a valid email address.';
+                responseMessage.classList.add('text-red-300'); // Indicate error
             }
         }
-
-        // Assign the submit handler to the form
-        document.querySelector('#newsletter-signup form').onsubmit = handleNewsletterSubmit;
-
 
         // Countdown Timer Logic
         const countdownElement = document.getElementById('countdown');
-        const heroSection = document.querySelector('section[data-launch-date]');
-        const launchDateString = heroSection ? heroSection.dataset.launchDate : null;
-        const launchDate = launchDateString ? new Date(launchDateString).getTime() : null;
+        const launchDateString = document.querySelector('section[data-launch-date]').dataset.launchDate;
+        const launchDate = new Date(launchDateString).getTime();
 
-        if (launchDate) {
-            const x = setInterval(function() {
-                const now = new Date().getTime();
-                const distance = launchDate - now;
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
-                document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
-                document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
-                document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
+            document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
 
-                if (distance < 0) {
-                    clearInterval(x);
-                    countdownElement.innerHTML = "Zyntiq is LIVE!";
-                    countdownElement.classList.remove('text-indigo-800');
-                    countdownElement.classList.add('text-green-500');
-                }
-            }, 1000);
-        } else {
-             countdownElement.innerHTML = "Launch date not set.";
-             countdownElement.classList.remove('text-indigo-800');
-             countdownElement.classList.add('text-red-500');
-        }
+            if (distance < 0) {
+                clearInterval(x);
+                countdownElement.innerHTML = "Zyntiq is LIVE!";
+                countdownElement.classList.remove('text-indigo-800');
+                countdownElement.classList.add('text-green-500');
+            }
+        }, 1000);
     </script>
 </body>
 </html>
