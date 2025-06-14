@@ -274,6 +274,45 @@
             transform: translateY(-3px) scale(1.03); /* Lift and slightly scale on hover */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(217, 76, 214, 0.6); /* Stronger shadow with pink glow */
         }
+
+        /* Social icon styling */
+        .social-icon {
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            filter: grayscale(100%); /* Start grayscale */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; /* Size of the circular background */
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Subtle shadow in default state */
+            color: #a0aec0; /* Default icon color */
+        }
+
+        .social-icon:hover {
+            filter: grayscale(0%); /* Full color on hover */
+            transform: translateY(-8px) scale(1.2); /* More pronounced lift and enlarge */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* Stronger shadow on hover */
+            border-color: transparent; /* Border disappears or blends with background */
+        }
+
+        /* Specific hover colors for each icon */
+        .social-icon.linkedin:hover {
+            background-color: #0A66C2; /* LinkedIn blue */
+            box-shadow: 0 8px 20px rgba(10, 102, 194, 0.6); /* LinkedIn blue glow */
+        }
+        .social-icon.linkedin:hover svg {
+            color: white; /* Change SVG color to white on hover */
+        }
+
+        .social-icon.instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); /* Instagram gradient */
+            box-shadow: 0 8px 20px rgba(214, 36, 159, 0.6); /* Instagram pink/purple glow */
+        }
+        .social-icon.instagram:hover svg {
+             color: white; /* Change SVG color to white on hover */
+        }
     </style>
 </head>
 <body>
@@ -409,7 +448,7 @@
                     <h3 class="text-xl font-semibold mb-3 text-white">Industry-Led, Future-Proof Curriculum</h3>
                     <p class="text-gray-100">Our content is continuously updated by industry leaders, ensuring your skills are always cutting-edge.</p>
                 </div>
-                 <!-- Difference Card 5: Post-Completion Placement Support -->
+                   <!-- Difference Card 5: Post-Completion Placement Support -->
                 <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-05s card-hover-effect">
                     <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-1.12-8.455-3.007a.999.999 0 00-1.002 1.86A25.923 25.923 0 0012 17c4.142 0 7.828-1.748 10.455-4.577a.999.999 0 00-1.002-1.86z"></path></svg>
@@ -417,7 +456,7 @@
                     <h3 class="text-xl font-semibold mb-3 text-white">Post-Completion Placement Support</h3>
                     <p class="text-gray-100">Beyond courses and internships, we offer active support for job placements and career transitions.</p>
                 </div>
-                 <!-- Difference Card 6: Zyntiq Alumni Network -->
+                   <!-- Difference Card 6: Zyntiq Alumni Network -->
                 <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-06s card-hover-effect">
                     <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857m7.5 1.857H17m-7.5 0A3 3 0 0112 15h2a3 3 0 013 3v2M3 18h18M6 6h.01M6 10h.01M6 14h.01M6 18h.01"></path></svg>
@@ -467,193 +506,158 @@
                     <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mx-auto mb-4">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.5l2 2 4-4m-12 11h.01M12 18h.01M16 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Mentorship & Feedback</h3>
-                    <p class="text-gray-100">Receive personalized guidance from industry leaders throughout your journey.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Global Networking</h3>
+                    <p class="text-gray-100">Expand your professional network with peers and mentors worldwide.</p>
                 </div>
             </div>
-            <a href="#newsletter-signup" class="inline-block mt-12 bg-white hover:bg-gray-100 text-indigo-800 font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-fade-in-up-delay-05s btn-hover-effect">
-                Learn More About Internships
-            </a>
         </div>
     </section>
 
     <!-- Accreditation & Trust -->
-    <section class="section-padding bg-gradient-to-br from-blue-100 to-indigo-200 text-gray-800" id="accreditation-trust">
+    <section class="section-padding bg-gray-100 text-gray-800" id="accreditation-trust">
         <div class="container mx-auto max-w-6xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in-up">Accreditation & Trust: Your Quality Assurance</h2>
-            <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in-up-delay-01s">Zyntiq is committed to delivering excellence. Our programs are designed to meet rigorous standards, ensuring your qualifications are recognized and respected.</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in-up">Our Recognitions & Trusted Partnerships</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-12 animate-fade-in-up-delay-01s">
+                Zyntiq is committed to providing recognized quality education. Our affiliations reflect our dedication to high standards and industry relevance.
+            </p>
 
-            <div class="flex flex-wrap justify-center items-center gap-12">
-                <!-- Placeholder for Government/Industry Certification Logo 1 -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-01s accreditation-card-hover">
-                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Govt+Cert+A" alt="Government Certification A" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
-                    <p class="text-sm font-medium text-gray-700">Certified by [Govt. Body A]</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center">
+                <!-- Logo 1: Global Certification Body -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-gray-200 accreditation-card-hover animate-fade-in-up-delay-01s">
+                    <img src="https://placehold.co/100x50/334155/ffffff?text=Certification+Body" alt="Global Certification Body" class="h-16 w-auto mb-2 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-600">Global Certifications Council</p>
                 </div>
-                <!-- Placeholder for Government/Industry Certification Logo 2 -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-02s accreditation-card-hover">
-                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Industry+Std+B" alt="Industry Standard B" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
-                    <p class="text-sm font-medium text-gray-700">Recognized by [Industry Org B]</p>
+                <!-- Logo 2: Industry Standards Institute -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-gray-200 accreditation-card-hover animate-fade-in-up-delay-02s">
+                    <img src="https://placehold.co/100x50/334155/ffffff?text=Standards+Institute" alt="Industry Standards Institute" class="h-16 w-auto mb-2 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-600">Tech Innovation Standards</p>
                 </div>
-                <!-- Placeholder for Government/Industry Certification Logo 3 -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-white shadow-lg border border-blue-200 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 animate-card-pop-delay-03s accreditation-card-hover">
-                    <img src="https://placehold.co/150x80/E0F2F7/334155?text=Quality+Seal+C" alt="Quality Seal C" class="h-16 w-auto object-contain mb-3 logo-filter-transition">
-                    <p class="text-sm font-medium text-gray-700">Quality Assured by [Seal C]</p>
+                <!-- Logo 3: Academic Partnership Network -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-gray-200 accreditation-card-hover animate-fade-in-up-delay-03s">
+                    <img src="https://placehold.co/100x50/334155/ffffff?text=Academic+Partner" alt="Academic Partnership Network" class="h-16 w-auto mb-2 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-600">Leading Academic Alliance</p>
+                </div>
+                <!-- Logo 4: Professional Development Association -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-gray-200 accreditation-card-hover animate-fade-in-up-delay-04s">
+                    <img src="https://placehold.co/100x50/334155/ffffff?text=Professional+Assoc." alt="Professional Development Association" class="h-16 w-auto mb-2 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-600">Global Professionals Forum</p>
+                </div>
+                <!-- Logo 5: Skill Recognition Authority -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-gray-200 accreditation-card-hover animate-fade-in-up-delay-05s">
+                    <img src="https://placehold.co/100x50/334155/ffffff?text=Skill+Authority" alt="Skill Recognition Authority" class="h-16 w-auto mb-2 logo-filter-transition">
+                    <p class="text-sm font-medium text-gray-600">Future Skills Accreditation</p>
                 </div>
             </div>
-            <p class="text-md text-gray-700 mt-10 max-w-3xl mx-auto animate-fade-in-up-delay-04s">
-                Our commitment to quality ensures that the skills you acquire at Zyntiq are not just theoretical, but officially endorsed for their relevance and excellence in the professional landscape.
-            </p>
-        </div>
-    </section>
 
-    <!-- Our Roadmap / Future Vision -->
-    <section class="section-padding bg-gradient-to-br from-gray-800 to-indigo-950 text-white">
-        <div class="container mx-auto max-w-6xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-fade-in-up">Our Roadmap: Innovations on the Horizon</h2>
-            <div class="flex flex-col md:flex-row justify-center items-center relative py-8">
-                <!-- Timeline Line (static, but elements animate) -->
-                <div class="absolute h-full w-1 bg-indigo-400 left-1/2 transform -translate-x-1/2 md:w-full md:h-1 md:top-1/2 md:left-0"></div>
-
-                <!-- Milestone 1 -->
-                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left p-4 animate-fade-in-up-delay-01s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
-                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">1</div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Platform Launch</h3>
-                    <p class="text-gray-200 text-sm">Full release of our core e-learning and internship matching platform.</p>
-                </div>
-
-                <!-- Milestone 2 -->
-                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-center text-center p-4 mt-8 md:mt-0 animate-fade-in-up-delay-03s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
-                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">2</div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">AI Personalization</h3>
-                    <p class="text-gray-200 text-sm">Introducing adaptive learning paths and smart career recommendations.</p>
-                </div>
-
-                <!-- Milestone 3 -->
-                <div class="relative z-10 w-full md:w-1/3 flex flex-col items-center md:items-end text-center md:text-right p-4 mt-8 md:mt-0 animate-fade-in-up-delay-05s bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg border border-indigo-600 card-hover-effect">
-                    <div class="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-md">3</div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Global Expansion</h3>
-                    <p class="text-gray-200 text-sm">Broadening course offerings and internship opportunities worldwide.</p>
-                </div>
+            <div class="mt-12 text-center">
+                <p class="text-lg text-gray-700 animate-fade-in-up-delay-06s">
+                    Our affiliations ensure that your skills are recognized and valued by employers worldwide, enhancing your career prospects.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Sign-up Section -->
-    <section class="bg-gradient-to-r from-indigo-600 to-purple-500 text-white section-padding text-center" id="newsletter-signup">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight animate-fade-in-up">Secure Your Spot: Join the Zyntiq Inner Circle!</h2>
-            <p class="text-lg md:text-xl opacity-90 mb-10 animate-fade-in-up-delay-01s">
-                Don't miss out on early access, exclusive beta invites, and foundational insights from Zyntiq as we launch.
+    <!-- Newsletter Signup / Early Access -->
+    <section class="section-padding bg-gradient-to-tr from-gray-800 to-gray-600 text-white" id="newsletter-signup">
+        <div class="container mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in-up">Be Among the First! Get Early Access to Zyntiq</h2>
+            <p class="text-lg md:text-xl opacity-90 mb-8 animate-fade-in-up-delay-01s">
+                Join our exclusive mailing list to receive launch updates, special offers, and early bird access to our platform. Don't miss out on the future of e-learning!
             </p>
-            <form class="w-full max-w-lg mx-auto" onsubmit="handleNewsletterSubmit(event)">
-                <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up-delay-02s">
-                    <input type="email" id="emailInput" placeholder="Enter your email address" class="flex-grow w-full sm:w-auto p-3 rounded-full text-gray-800 border-2 border-white focus:outline-none focus:ring-2 focus:ring-yellow-400" required>
-                    <button type="submit" class="w-full sm:w-auto gradient-button font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-fade-in-up-delay-06s">
-                        Get Early Access!
-                    </button>
-                </div>
-                <p id="responseMessage" class="mt-4 text-sm text-yellow-200"></p>
+            <form action="#" method="POST" class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto animate-fade-in-up-delay-02s">
+                <input type="email" placeholder="Your Email Address" class="flex-grow p-4 rounded-full bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-pink-400 text-lg transition-all duration-300" required>
+                <button type="submit" class="py-4 px-8 rounded-full font-bold shadow-lg gradient-button btn-hover-effect text-lg">
+                    Subscribe
+                </button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-12 px-6 md:px-12 animate-fade-in">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <!-- Company Info -->
-            <div>
-                <h3 class="text-xl font-bold text-white mb-4">Zyntiq</h3>
-                <p class="text-sm">Innovating e-learning and career opportunities for a brighter future.</p>
-            </div>
-            <!-- Quick Links -->
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#about-zyntiq" class="hover:text-white transition-colors duration-200 text-sm">Our Vision</a></li>
-                    <li><a href="#the-zyntiq-difference" class="hover:text-white transition-colors duration-200 text-sm">Why Zyntiq?</a></li>
-                    <li><a href="#real-world-internships" class="hover:text-white transition-colors duration-200 text-sm">Internships</a></li>
-                    <li><a href="#accreditation-trust" class="hover:text-white transition-colors duration-200 text-sm">Certifications</a></li>
-                    <li><a href="#newsletter-signup" class="hover:text-white transition-colors duration-200 text-sm">Get Early Access</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <!-- Connect Info -->
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-4">Connect</h3>
-                <ul class="space-y-2 text-sm">
-                    <li>Email: <a href="mailto:info@zyntiq.com" class="hover:text-white transition-colors duration-200">info@zyntiq.com</a></li>
-                </ul>
-            </div>
-            <!-- Social Media -->
-            <div>
-                <h3 class="text-lg font-semibold text-white mb-4">Follow Our Journey</h3>
-                <div class="flex space-x-4">
-                    <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWji" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0 2.138c-3.141 0-3.535.012-4.76.066-2.57.118-3.9 1.488-4.018 4.018-.054 1.225-.066 1.619-.066 4.76s.012 3.535.066 4.76c.118 2.53 1.488 3.9 4.018 4.018 1.225.054 1.619.066 4.76.066s3.535-.012 4.76-.066c2.53-.118 3.9-1.488 4.018-4.018.054-1.225.066-1.619.066-4.76s-.012-3.535-.066-4.76c-.118-2.53-1.488-3.9-4.018-4.018-1.225-.054-1.619-.066-4.76-.066zm0 1.954a6.762 6.762 0 100 13.524 6.762 6.762 0 000-13.524zm0 2.138a4.624 4.624 0 110 9.248 4.624 4.624 0 010-9.248zm-6.242-4.01a1.272 1.272 0 100 2.544 1.272 1.272 0 000-2.544z"/></svg>
-                    </a>
-                    <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-200">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38.99-2.5 2.48-2.5h.02c1.379 0 2.48 1.119 2.48 2.5zM0 24h4.9v-16H0V24zM9.345 16.57c-1.696-1.056-2.585-1.921-2.585-4.148v-2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v2.071c0 2.227-.889 3.092-2.585 4.148zM24 24h-4.9v-8.82c0-2.317-1.053-4.148-2.585-4.148h-.026c-1.696 0-2.585 1.831-2.585 4.148v8.82H9.345V8h4.9v2.071c0-2.317 1.053-4.148 2.585-4.148h.026c1.696 0 2.585 1.831 2.585 4.148v8.82H24z"/>
-                        </svg>
-                    </a>
+    <footer class="bg-gray-950 text-gray-400 py-10 px-6 md:px-12 text-center">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Zyntiq</h3>
+                    <p class="text-sm">Innovating the future of e-learning and career development.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about-zyntiq" class="text-gray-400 hover:text-pink-300 transition-colors duration-200">Our Vision</a></li>
+                        <li><a href="#the-zyntiq-difference" class="text-gray-400 hover:text-pink-300 transition-colors duration-200">Why Zyntiq?</a></li>
+                        <li><a href="#real-world-internships" class="text-gray-400 hover:text-pink-300 transition-colors duration-200">Internships</a></li>
+                        <li><a href="#accreditation-trust" class="text-gray-400 hover:text-pink-300 transition-colors duration-200">Certifications</a></li>
+                    </ul>
+                </div>
+                <!-- Redesigned Social Media Container - Now in a box -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Follow Us</h3>
+                    <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-700 mx-auto max-w-xs">
+                        <p class="text-sm text-gray-300 mb-4">Connect with us on our social channels:</p>
+                        <div class="flex justify-center items-center gap-6">
+                            <!-- LinkedIn Icon -->
+                            <a href="https://www.linkedin.com/company/zyntiq/" target="_blank" aria-label="LinkedIn" class="social-icon linkedin">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.784 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <!-- Instagram Icon -->
+                            <a href="https://www.instagram.com/zyntiq_official?igsh=a3d3cGFtb3hudWpi&utm_source=qr" target="_blank" aria-label="Instagram" class="social-icon instagram">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.354.2-6.786 2.632-6.985 6.985-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.2 4.352 2.632 6.786 6.985 6.985 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.354-.2 6.785-2.632 6.985-6.985.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.2-4.354-2.632-6.786-6.985-6.985-1.28-.058-1.688-.072-4.947-.072zm0 7.378c-2.75 0-4.972 2.222-4.972 4.972s2.222 4.972 4.972 4.972 4.972-2.222 4.972-4.972-2.222-4.972-4.972-4.972zm0 8.012c-1.682 0-3.04-1.359-3.04-3.04s1.359-3.04 3.04-3.04 3.04 1.359 3.04 3.04-1.359 3.04-3.04 3.04zm6.545-11.272c0 1.094 1.135 1.982 2.018 1.982s2.018-.888 2.018-1.982-1.135-1.982-2.018-1.982-2.018.888-2.018 1.982z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="text-center text-sm text-gray-500 mt-8">
-            &copy; 2025 Zyntiq. All rights reserved.
+            <div class="border-t border-gray-700 pt-8 mt-8">
+                <p class="text-sm">&copy; <span id="current-year"></span> Zyntiq. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Newsletter form submission handling
-        function handleNewsletterSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
-            const emailInput = document.getElementById('emailInput');
-            const responseMessage = document.getElementById('responseMessage');
-            const email = emailInput.value;
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            if (email) {
-                // In a real application, you would send this email to your backend server
-                // For this demonstration, we'll just show a success message.
-                responseMessage.textContent = 'Thanks for your interest! We\'ll notify you when Zyntiq launches!';
-                responseMessage.classList.add('text-yellow-200'); // Ensure it's visible
-                emailInput.value = ''; // Clear the input field
-                emailInput.disabled = true; // Optionally disable the input
-                event.target.querySelector('button').disabled = true; // Disable the button
-            } else {
-                responseMessage.textContent = 'Please enter a valid email address.';
-                responseMessage.classList.add('text-red-300'); // Indicate error
-            }
-        }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Countdown Timer Logic
-        const countdownElement = document.getElementById('countdown');
-        const launchDateString = document.querySelector('section[data-launch-date]').dataset.launchDate;
-        const launchDate = new Date(launchDateString).getTime();
-
-        const x = setInterval(function() {
+        function updateCountdown() {
+            const launchDateString = document.querySelector('section[data-launch-date]').dataset.launchDate;
+            const launchDate = new Date(launchDateString).getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("countdown-days").innerHTML = String(days).padStart(2, '0');
-            document.getElementById("countdown-hours").innerHTML = String(hours).padStart(2, '0');
-            document.getElementById("countdown-minutes").innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById("countdown-seconds").innerHTML = String(seconds).padStart(2, '0');
+            document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
 
             if (distance < 0) {
-                clearInterval(x);
-                countdownElement.innerHTML = "Zyntiq is LIVE!";
-                countdownElement.classList.remove('text-indigo-800');
-                countdownElement.classList.add('text-green-500');
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "Launched!";
             }
-        }, 1000);
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to display countdown immediately
     </script>
 </body>
 </html>
