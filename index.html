@@ -378,7 +378,7 @@
         <!-- Background Pattern & Abstract Shapes -->
         <div class="absolute inset-0 hero-pattern z-0"></div>
 
-        <!-- SVG Blob Animation Container -->
+        <!-- SVG Blob Animation Container for Hero -->
         <div class="svg-blob">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <filter id="goo">
@@ -528,7 +528,22 @@
     </section>
 
     <!-- Real-World Impact: Zyntiq Internships -->
-    <section class="section-padding bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white internship-section-bg" id="real-world-internships">
+    <section class="section-padding bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white internship-section-bg relative overflow-hidden" id="real-world-internships">
+        <!-- SVG Blob Animation Container for Internship Section -->
+        <div class="svg-blob">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+                <g filter="url(#goo)">
+                    <polygon points="100 0, 150 25, 200 100, 150 175, 100 200, 50 175, 0 100, 50 25" style="fill: rgba(255, 255, 255, 0.1); animation: blob-animation 25s infinite alternate ease-in-out; transform-origin: center center;"></polygon>
+                    <circle cx="120" cy="80" r="30" style="fill: rgba(255, 255, 255, 0.1); animation: blob-animation 22s infinite alternate reverse ease-in-out; transform-origin: center center;"></circle>
+                    <circle cx="70" cy="130" r="20" style="fill: rgba(255, 255, 255, 0.1); animation: blob-animation 28s infinite alternate ease-in-out; transform-origin: center center;"></circle>
+                </g>
+            </svg>
+        </div>
         <div class="container mx-auto max-w-6xl text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white animate-fade-in-up">Real-World Impact: Zyntiq Internships</h2>
             <p class="text-lg md:text-xl opacity-90 mb-12 animate-fade-in-up-delay-01s">
