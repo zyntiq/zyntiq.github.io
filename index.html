@@ -95,6 +95,20 @@
             }
         }
 
+        /* New keyframe for running gradient animation */
+        @keyframes run-gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Blob animation for Hero Section */
+        @keyframes blob-animation {
+            0% { transform: scale(1) translate(0px, 0px); border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+            25% { transform: scale(1.05) translate(10px, -10px); border-radius: 40% 60% 70% 30%/40% 70% 30% 60%; }
+            50% { transform: scale(1) translate(0px, 10px); border-radius: 70% 30% 40% 60%/70% 40% 60% 30%; }
+            75% { transform: scale(0.95) translate(-10px, -5px); border-radius: 30% 70% 60% 40%/30% 60% 40% 70%; }
+            100% { transform: scale(1) translate(0px, 0px); border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+        }
 
         /* Custom animation utility classes */
         .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
@@ -315,6 +329,29 @@
         .social-icon.instagram:hover svg {
              color: white; /* Change SVG color to white on hover */
         }
+
+        /* SVG Blob styling */
+        .svg-blob {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Behind content */
+        }
+
+        .svg-blob svg {
+            width: 100%;
+            height: 100%;
+            filter: url(#goo); /* Apply goo filter for soft edges */
+        }
+
+        .svg-blob polygon {
+            fill: rgba(255, 255, 255, 0.1); /* Subtle white fill for the blob shapes */
+            animation: blob-animation 20s infinite alternate ease-in-out; /* Apply blob animation */
+            transform-origin: center center; /* Ensure transformations are from center */
+        }
     </style>
 </head>
 <body>
@@ -340,7 +377,24 @@
         <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent z-0"></div>
         <!-- Background Pattern & Abstract Shapes -->
         <div class="absolute inset-0 hero-pattern z-0"></div>
-        <!-- More dynamic background shapes -->
+
+        <!-- SVG Blob Animation Container -->
+        <div class="svg-blob">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+                <g filter="url(#goo)">
+                    <polygon points="100 0, 150 25, 200 100, 150 175, 100 200, 50 175, 0 100, 50 25"></polygon>
+                    <circle cx="150" cy="50" r="20" />
+                    <circle cx="50" cy="150" r="25" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- More dynamic background shapes (still keeping these) -->
         <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-indigo-700 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-slow" style="animation-delay: 0.5s;"></div>
         <div class="absolute top-1/2 right-1/3 w-40 h-40 bg-purple-700 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-medium" style="animation-delay: 1.5s;"></div>
         <div class="absolute bottom-1/4 left-1/3 w-24 h-24 bg-blue-500 rounded-full mix-blend-screen opacity-20 blur-3xl glow-float-animation-fast" style="animation-delay: 2.5s;"></div>
@@ -372,8 +426,10 @@
     </section>
 
     <!-- Our Vision (Repurposed from 'About Zyntiq') -->
-    <section class="section-padding bg-gradient-to-br from-gray-900 to-gray-700 text-white" id="about-zyntiq">
-        <div class="container mx-auto max-w-6xl text-center">
+    <section class="section-padding bg-gradient-to-br from-gray-900 to-gray-700 text-white relative overflow-hidden" id="about-zyntiq">
+        <!-- Running Gradient Background Animation -->
+        <div class="absolute inset-0 z-0 opacity-20" style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); background-size: 200% 100%; animation: run-gradient 10s linear infinite;"></div>
+        <div class="container mx-auto max-w-6xl text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-fade-in-up">Our Vision: Elevating Your Professional Journey</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Benefit Card 1 -->
